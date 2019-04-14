@@ -6,6 +6,13 @@ struct process{
     float priority;
     bool flag;
 };
+void display(struct process a){
+    printf("Procees id = %d\n",a.index);
+    printf("Arr time = %d \n",a.arr_time );
+    printf("Bt time = %d \n",a.bt_time);
+    printf("Wt time = %d\n",a.wt_time);
+    printf("priority = %f\n",a.priority);
+}
 void print_wt_bt(struct process arr[],int n){
     for(int i=0;i<n;i++){
         printf("Process no = %d, Wt time = %d , Turnaround Time = %d\n",arr[i].index,arr[i].wt_time,arr[i].wt_time+arr[i].bt_time);
