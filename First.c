@@ -6,6 +6,42 @@ struct process{
     float priority;
     bool flag;
 };
+void swap_n(struct process *first,struct process second){//first process is copied into second process
+    second.arr_time=first->arr_time;
+    second.bt_time=first->bt_time;
+    second.wt_time=first->wt_time;
+    second.priority=first->priority;
+    second.index=first->index;
+}
+void sort(struct process arr[],int n){
+    for(int i=1;i<n;i++){
+        struct process obj=arr[i]; //used insertion sort
+        int j=i-1;
+        while(j>=0&&arr[j].priority>=obj.priority){
+            if(arr[j].priority==obj.priority){ //if priority is same then it is sorted according to arrival time
+                if(arr[j].arr_time>obj.arr_time){  //swapping if priority is same
+                    swapprocess(&arr[j],&arr[j+1]);
+                }
+            }else{
+                swapprocess(&arr[j],&arr[j+1]);// swapped if priority is not same
+            }
+            j--;//reducing the value of index
+        }
+        swap_n(&arr[j+1],obj); //keeping the process backward in queue then pushing the process
+    }
+};
+void change_wt_priority(struct process arr[],int n,int wt,int start){
+    for(int i=start;i<n;i++){
+        if(arr[i].flag){
+                arr[i].wt_time+=(wt-arr[i].arr_time);//
+                arr[i].wt_time+=2;
+                arr[i].flag=false;
+        }else{
+                arr[i].wt_time+=(wt);//
+                arr[i].wt_time+=2;
+        }
+    }
+}
 void display(struct process a){
     printf("Procees id = %d\n",a.index);
     printf("Arr time = %d \n",a.arr_time );
