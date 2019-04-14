@@ -6,6 +6,26 @@ struct process{
     float priority;
     bool flag;
 };
+void swapprocess(struct process *first,struct process *second){
+    int p,q,r;
+    float d;
+    int e;
+    p=first->arr_time;
+    q=first->bt_time;
+    r=first->wt_time;
+    d=first->priority;
+    e=first->index;
+    first->arr_time=second->arr_time;
+    first->bt_time=second->bt_time;
+    first->wt_time=second->wt_time;
+    first->priority=second->priority;
+    first->index=second->index;
+    second->arr_time=p;
+    second->bt_time=q;
+    second->wt_time=r;
+    second->priority=d;
+    second->index=e;
+}
 void swap_n(struct process *first,struct process second){//first process is copied into second process
     second.arr_time=first->arr_time;
     second.bt_time=first->bt_time;
