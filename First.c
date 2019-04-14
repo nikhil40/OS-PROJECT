@@ -6,6 +6,11 @@ struct process{
     float priority;
     bool flag;
 };
+void print_wt_bt(struct process arr[],int n){
+    for(int i=0;i<n;i++){
+        printf("Process no = %d, Wt time = %d , Turnaround Time = %d\n",arr[i].index,arr[i].wt_time,arr[i].wt_time+arr[i].bt_time);
+    }
+}
 int main(int argc, char const *argv[]) {
     printf("Enter number of process\n");
     int p_no;
